@@ -1,7 +1,7 @@
 /* ==========================================================================
    NARMIYAS — LUXURY EDITORIAL CONTEMPORARY FASHION APPLICATION ENGINE
    100% Non-Repeating Unique Image Distribution across Products & Swatches
-   ========================================================================== */
+   ========================================================================== */ 
 
 document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
