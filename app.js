@@ -507,8 +507,14 @@ function openPDPModal(productId) {
   container.innerHTML = `
     <div class="modal-close-icon" onclick="closePDPModal()">✕</div>
     <div class="pdp-spread">
-      <div class="pdp-gallery-col">
+      <div class="pdp-gallery-col" style="position: relative;">
         <img src="${product.primaryImg}" alt="${product.name}" class="pdp-main-img" id="pdp-active-img">
+        <button onclick="document.getElementById('pdp-active-img').src = document.getElementById('pdp-active-img').src.includes('${product.primaryImg}') ? '${product.secondaryImg}' : '${product.primaryImg}'" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button onclick="document.getElementById('pdp-active-img').src = document.getElementById('pdp-active-img').src.includes('${product.primaryImg}') ? '${product.secondaryImg}' : '${product.primaryImg}'" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
         <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
           <img src="${product.primaryImg}" style="width: 70px; height: 90px; object-fit: cover; cursor: pointer; border: 1px solid var(--text-primary);" onclick="document.getElementById('pdp-active-img').src='${product.primaryImg}'">
           <img src="${product.secondaryImg}" style="width: 70px; height: 90px; object-fit: cover; cursor: pointer; border: 1px solid var(--border-medium);" onclick="document.getElementById('pdp-active-img').src='${product.secondaryImg}'">

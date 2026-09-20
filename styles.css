@@ -48,6 +48,62 @@ body.dark-theme {
   --border-medium: rgba(255, 255, 255, 0.2);
 }
 
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme p,
+body.dark-theme .sig-name,
+body.dark-theme .drop-name,
+body.dark-theme .mood-title,
+body.dark-theme .editorial-caps,
+body.dark-theme .manifesto-text,
+body.dark-theme .custom-subtext,
+body.dark-theme .step-title,
+body.dark-theme .journal-title,
+body.dark-theme .section-title,
+body.dark-theme .manifesto-heading,
+body.dark-theme .custom-heading,
+body.dark-theme .rarity-title,
+body.dark-theme .hero-badge-title,
+body.dark-theme .hero-badge-sub,
+body.dark-theme .drop-details div:nth-child(2),
+body.dark-theme .drop-details div:nth-child(3) {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .size-pill {
+  color: var(--text-primary) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-theme .btn-secondary {
+  border-color: var(--border-light) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme .btn-secondary:hover {
+  background-color: var(--text-primary) !important;
+  color: var(--bg-primary) !important;
+  border-color: var(--text-primary) !important;
+}
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select,
+body.dark-theme .form-input,
+body.dark-theme .form-textarea {
+  color: var(--text-primary) !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
 /* Reset & Base Setup */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -654,13 +710,13 @@ body.dark-theme .mega-menu {
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   list-style: none;
 }
 
 .mobile-nav-links a {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: var(--text-primary);
 }
 
@@ -2424,4 +2480,272 @@ body.dark-theme .mobile-bottom-dock {
 .magnetic {
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE REDESIGN (max-width: 767px) - HOME HERO ONLY
+   ========================================================================== */
+@media (max-width: 767px) {
+  /* Hide Desktop-only elements in header */
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* 1. MOBILE HEADER */
+  .site-header {
+    height: 60px !important;
+    background-color: transparent !important;
+    padding-top: env(safe-area-inset-top);
+  }
+  .site-header.scrolled {
+    background-color: rgba(251, 249, 245, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: none;
+  }
+  .brand-name {
+    font-size: 1.4rem !important;
+    color: var(--text-primary) !important;
+  }
+  .mobile-menu-btn span {
+    background-color: #121212 !important;
+  }
+  .site-header .action-btn, .site-header .theme-toggle-btn {
+    color: #121212 !important;
+  }
+  .site-header .action-btn svg, .site-header .theme-toggle-btn svg {
+    stroke: #121212 !important;
+  }
+
+  /* 2. HERO SECTION (100svh) */
+  .hero-section {
+    position: relative !important;
+    min-height: 100svh !important;
+    height: 100svh !important;
+    padding-top: 0 !important;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* 3. HERO IMAGE & OVERLAY */
+  .hero-right {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+  .hero-image-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: none !important; /* Fix for top gap */
+    aspect-ratio: auto !important;
+    box-shadow: none !important;
+  }
+  .hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    object-position: center 15% !important; /* Keep model face/garment in view */
+    animation: mobileHeroZoom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .hero-image-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.20) 0%,
+      rgba(0,0,0,0.00) 35%,
+      rgba(0,0,0,0.10) 55%,
+      rgba(0,0,0,0.65) 100%
+    ) !important;
+  }
+  .hero-badge {
+    display: none !important; /* Hide badge to reduce clutter */
+  }
+
+  /* 4. HERO CONTENT */
+  .hero-left {
+    position: relative !important;
+    margin-top: auto !important; /* Force to bottom of flex container */
+    width: 100% !important;
+    z-index: 2;
+    padding: 20px !important;
+    padding-bottom: calc(110px + env(safe-area-inset-bottom)) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  /* Remove desktop hero tag on mobile to save space */
+  .hero-tag {
+    display: none !important;
+  }
+
+  /* 5. HEADLINE TYPOGRAPHY */
+  .hero-headline {
+    color: #fff !important;
+    font-size: clamp(42px, 13vw, 72px) !important;
+    line-height: 0.9 !important;
+    max-width: 90% !important;
+    margin-bottom: 24px !important;
+    animation: mobileFadeUp 0.8s ease forwards 0.25s;
+    opacity: 0;
+  }
+  .hero-headline span.italic {
+    color: var(--accent-gold-light) !important;
+  }
+
+  /* 6. DESCRIPTION TEXT */
+  .hero-statement {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    max-width: 320px !important;
+    margin-bottom: 32px !important;
+    animation: mobileFadeUp 0.8s ease forwards 0.45s;
+    opacity: 0;
+  }
+
+  /* 7. CTA BUTTONS */
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    animation: mobileFadeUp 0.8s ease forwards 0.60s;
+    opacity: 0;
+  }
+  .hero-cta-group .btn-primary {
+    width: 100% !important;
+    height: 50px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px; /* Subtle radius */
+  }
+  .hero-cta-group .editorial-link {
+    width: 100% !important;
+    height: 44px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
+    font-size: 0.9rem !important;
+  }
+
+  /* 8. MOBILE BOTTOM DOCK (NAVIGATION) */
+  .mobile-bottom-dock {
+    bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: translateX(0) !important;
+    border-radius: 30px !important;
+    padding: 0 16px !important;
+    height: 60px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .dock-action-item {
+    padding: 0 8px !important;
+    color: #121212 !important;
+  }
+  .dock-action-item svg {
+    stroke: #121212 !important;
+    margin-bottom: 2px !important;
+  }
+  .dock-action-item span {
+    font-size: 0.65rem !important;
+  }
+  .dock-highlight-btn {
+    padding: 0.4rem 0.8rem !important;
+  }
+  
+  /* 9. JUST DROPPED (HORIZONTAL SCROLL) */
+  .drops-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important; /* Smooth iOS scroll */
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    gap: 16px !important;
+    padding-bottom: 24px !important;
+    scrollbar-width: thin !important;
+    width: 100% !important; /* Force track boundary */
+  }
+  .drops-track::-webkit-scrollbar {
+    display: block !important;
+    height: 4px !important;
+  }
+  .drops-track::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  .drops-track::-webkit-scrollbar-thumb {
+    background: var(--text-muted) !important;
+    border-radius: 4px !important;
+  }
+  .drop-card {
+    flex: 0 0 85vw !important;
+    scroll-snap-align: start !important;
+    max-width: 85vw !important; /* Force card limits */
+  }
+
+  /* 10. ANIMATIONS */
+  @keyframes mobileHeroZoom {
+    0% { transform: scale(1.04); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes mobileFadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 11. MODAL & PRELOADER CENTERING */
+  #search-overlay > div {
+    padding: 1.5rem !important;
+    width: 92% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+  #search-overlay input {
+    font-size: 1.1rem !important;
+    padding: 1rem 0 !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+  #search-overlay input::placeholder {
+    font-size: 0.85rem !important;
+  }
+  .narmiyas-preloader {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  .preloader-content {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 }
